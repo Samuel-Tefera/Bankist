@@ -28,7 +28,10 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
-});
+} );
+
+///////////////////////////////////////
+// Button scroll
 
 const btnScrollTo = document.querySelector( '.btn--scroll-to' );
 const section1 = document.querySelector( '#section--1' );
@@ -36,3 +39,16 @@ const section1 = document.querySelector( '#section--1' );
 btnScrollTo.addEventListener( 'click', function ( e ) {
   section1.scrollIntoView( { behavior: "smooth" } );
 } );
+
+///////////////////////////////////////
+// Page navigation
+
+document.querySelector( '.nav__links' ).addEventListener(
+  'click', function ( e ) {
+    e.preventDefault();
+    if ( e.target.classList.contains( 'nav__link' )
+      && !e.target.classList.contains( 'btn--show-modal' ) ) {
+        const sectionId = e.target.getAttribute( 'href' );
+        document.querySelector( sectionId ).scrollIntoView( { behavior: 'smooth' } );
+      };
+});
