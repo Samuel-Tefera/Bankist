@@ -51,4 +51,29 @@ document.querySelector( '.nav__links' ).addEventListener(
         const sectionId = e.target.getAttribute( 'href' );
         document.querySelector( sectionId ).scrollIntoView( { behavior: 'smooth' } );
       };
-});
+} );
+
+///////////////////////////////////////
+// Tabbed component
+const tabs = document.querySelectorAll( '.operations__tab' );
+const tabsContainer = document.querySelector( '.operations__tab-container' );
+const tabsContent = document.querySelectorAll( '.operations__content' );
+
+tabsContainer.addEventListener( 'click', function ( e ) {
+  const clicked = e.target.closest( '.operations__tab' );
+  
+  // Guard clause
+  if ( !clicked ) return;
+
+  // Active tab
+  tabs.forEach( tab => tab.classList.remove( 'operations__tab--active' ) );
+  clicked.classList.add( 'operations__tab--active' )
+
+  // Remove active content
+  tabsContent.forEach( cont =>
+    cont.classList.remove( 'operations__content--active' ) )
+  
+  // Active content area
+  document.querySelector( `.operations__content--${ clicked.dataset.tab }` )
+    .classList.add( 'operations__content--active' );
+} );
