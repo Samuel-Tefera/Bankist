@@ -209,3 +209,13 @@ goToSlide( 0 );
 
 btnRight.addEventListener( 'click', nextSlide );
 btnLeft.addEventListener( 'click', prevSlide );
+
+// Slider by KeyBoard right and left Arrow keys
+document.addEventListener( 'keydown', function ( e ) {
+  if ( e.key === 'ArrowRight' ) {
+    nextSlide();
+  }
+  else if ( e.key === 'ArrowLeft' ) {
+    prevSlide();
+  }
+} );
